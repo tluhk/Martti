@@ -1,0 +1,16 @@
+{
+  "name": "martti",
+  "version": "1.0.0",
+  "description": "Siit repositooriumist leiad tõenäoliselt loengutes kirjutatud koodi ja muid loengutega seotud dokumnete ja katsetusi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2"
+  }
+}
