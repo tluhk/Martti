@@ -1,12 +1,13 @@
-const axios = require("axios");
+const axios = require('axios');
 
-const baseUrl = "https://jsonplaceholder.typicode.com";
+const baseUrl = 'https://jsonplaceholder.typicode.com';
 
 const getData = async (resource) => {
   try {
     const response = await axios.get(`${baseUrl}/${resource}`);
     return response.data;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error.message);
     return null;
   }
