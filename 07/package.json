@@ -1,0 +1,23 @@
+{
+  "name": "03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mocha": "^10.4.0",
+    "mysql2": "^3.10.0",
+    "chai": "^4.4.1",
+    "supertest": "^7.0.0"
+  },
+  "devDependencies": {
+  }
+}
