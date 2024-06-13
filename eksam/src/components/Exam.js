@@ -1,21 +1,54 @@
-import React from 'react';
-import { Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Button, Card } from 'react-bootstrap';
 import data from '../data/data';
-import Question from './Question';
 
-function Exam() {
+const questions = data.sjta.questions;
+
+
+const getRandomIndex = (excludeIndex, length) => {
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * length);
+  } while (newIndex === excludeIndex);
+  return newIndex;
+};
+
+const Questions = () => {
+  const [currentQuestion, setCurrentQuestion] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        setIndex((prevIndex) => getRandomIndex(prevIndex, questions.length));
+      }, 50)
+
+      return () => clearInterval(interval);
+    }
+  }, [isRunning]);
+
+  useEffect(() => {
+    setCurrentQuestion(questions[index]);
+  }, [index]);
+
+  const handleToggle = () => {
+    setIsRunning(!isRunning);
+  };
+
   return (
-    <Row>
-      <h1>Exam</h1>
-      <div>
-      {
-        data.sjta.questions.map((question, index) => {
-          return <Question key={index} question={question} />
-        })
-      }
-      </div>
-    </Row>
+    <Container className="text-center my-5">
+      <Card onClick={handleToggle}>
+        <Card.Body>
+          <Card.Title>Vastatav teema</Card.Title>
+          <Card.Text>{currentQuestion}</Card.Text>
+          <Button variant="primary" onClick={handleToggle}>
+            {isRunning ? 'Stop' : 'Start'}
+          </Button>
+        </Card.Body>
+      </Card>
+    </Container>
   );
-}
+};
 
-export default Exam;
+export default Questions;
