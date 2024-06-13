@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import NavBar from './NavBar';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -36,10 +35,7 @@ function Login() {
   }
 
   return (
-    <Container>
-      <Row>
-        <NavBar />
-      </Row>
+    <>
       <Row>
         <Col>
           <h1>Login</h1>
@@ -66,7 +62,7 @@ function Login() {
       </Form>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 };
 

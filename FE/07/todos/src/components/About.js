@@ -1,12 +1,11 @@
 import React from 'react';
-import NavBar from './NavBar';
+import { Row } from 'react-bootstrap';
 
 function About() {
   return (
-    <div>
-      <NavBar />
+    <Row>
       <h1>About</h1>
-    </div>
+    </Row>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row } from 'react-bootstrap';
 import NavElement from './NavElement';
 
 const style = {
@@ -8,11 +9,14 @@ const style = {
 
 function NavBar() {
   return(
-    <div style={style}>
-      <NavElement path='/' name='Home' />
-      <NavElement path='/about' name='About' />
-      <NavElement path='/login' name='Login' />
-    </div>
+    <Row>
+      <div style={style}>
+        <NavElement path='/' name='Home' />
+        <NavElement path='/about' name='About' />
+        <NavElement path='/posts' name='Posts' />
+        <NavElement path='/login' name='Login' />
+      </div>
+    </Row>
   );
 };
 

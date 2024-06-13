@@ -6,6 +6,7 @@ const style = {
     margin: '5px',
     flex: 1,
     textAlign: 'center',
+    textDecoration: 'none',
 }
 
 function NavElement(props) {
