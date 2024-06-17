@@ -40,7 +40,7 @@ const Questions = () => {
     <Container className="text-center my-5">
       <Card onClick={handleToggle}>
         <Card.Body>
-          <Card.Title>Vastatav teema</Card.Title>
+          <Card.Title>Teema</Card.Title>
           <Card.Text>{currentQuestion}</Card.Text>
           <Button variant="primary" onClick={handleToggle}>
             {isRunning ? 'Stop' : 'Start'}

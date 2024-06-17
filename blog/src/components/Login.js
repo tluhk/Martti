@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState(null);
   const [login, setLogin] = useState({
     email: '',
     password: '',
@@ -14,7 +17,25 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Siia tuleb sisselogimise loogika.
+    if (!login.email || !login.password) {
+
+    }
+    if (login.email === 'admin@admin.ee' && login.password === 'admin') {
+      console.log('Kasutaja on sisselogitud!');
+      localStorage.setItem('isLoggedIn', 'true');
+      setMessage('You have successfully logged in!');
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+      // navigate('/');
+    } else {
+      setMessage('Wrong email or password!');
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+      return;
+    }
+      
     console.log('Sisselogimine:', login);
   };
 
@@ -25,6 +46,7 @@ const Login = () => {
           <Card style={{ width: '20rem', padding: '20px' }}>
             <Card.Body>
               <Card.Title className="text-center display-6">Logi sisse</Card.Title>
+              {message && <div>{message}</div>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
