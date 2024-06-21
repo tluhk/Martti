@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { AuthContext } from './AuthContext';
 
@@ -17,14 +17,19 @@ const Login = () => {
     try {
       const response = await axios.post('https://blog.hk.tlu.ee/login', loginData);
       login(response.data.token);
-      setMessage('Oled edukalt sisse loginud');
+      setMessage({
+        variant: 'success',
+        message: 'Oled edukalt sisse logitud'
+      });
       setTimeout(() => {
-        setMessage(null);
         navigate('/');
       }, 2000);
     } catch (error) {
       console.log(error);
-      setMessage(error.response.data.message);
+      setMessage({
+        variant: 'warning',
+        message: error.response.data.message
+      });
       setLoginData({ ...loginData, password: ''  });
       setTimeout(() => {
         setMessage(null);
@@ -78,7 +83,7 @@ const Login = () => {
                   Logi sisse
                 </Button>
               </Form>
-              {message && <div>{message}</div>}
+              {message && <Alert style={{marginTop: '10px'}} variant={message.variant} className='text-center'>{message.message}</Alert>}
             </Card.Body>
           </Card>
         </Col>
